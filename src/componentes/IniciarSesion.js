@@ -1,9 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
+import Home from "./Home";
 
 const IniciarSesion = () => {
   const [nombreUsuario, setNombreUsuario] = useState("");
   const [credencialUsuario, setCredencialUsuario] = useState("");
+  const [sesionIniciada, setSesionIniciada] = useState(false);
 
   const manejarFormularioLogin = (e) => {
     e.preventDefault();
@@ -25,8 +27,7 @@ const IniciarSesion = () => {
       })
       .then((data) => {
         if (data.success) {
-          // Alerta de inicio de sesión exitoso
-          alert("Inicio de sesión exitoso");
+          setSesionIniciada(true);
         } else {
           // Alerta de inicio de sesión fallido
           alert("Inicio de sesión fallido");
@@ -34,9 +35,14 @@ const IniciarSesion = () => {
       })
       .catch((error) => console.error("Error al recuperar datos: ", error));
   };
-  
 
   const cerrarVentana = () => {};
+
+  // inicia la sesión
+  if (sesionIniciada) {
+    return <Home />;
+  }
+
 
   return (
     <div className="InicarSesion">
