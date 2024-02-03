@@ -19,15 +19,7 @@ const GlobalNavbar = () => {
               </Link>
             </li>
           </ul>
-        </div>
-        <Link to="/futbol-manager/login">
-        <button className="btn btn-outline-danger" type="submit">
-          Iniciar sesión
-        </button>
-        </Link>
-        <button className="btn btn-outline-warning ms-2" type="submit">
-          Registrarse
-        </button>
+        </div>        
       </div>
     </nav>
   );

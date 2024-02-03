@@ -1,15 +1,17 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import Home from "./Home";
+import { useNavigate } from "react-router-dom";
 
 const IniciarSesion = () => {
   const [nombreUsuario, setNombreUsuario] = useState("");
   const [credencialUsuario, setCredencialUsuario] = useState("");
-  const [sesionIniciada, setSesionIniciada] = useState(false);
+  const [iniciarSesion, setIniciarSesion] = useState(false);
+  const navigate = useNavigate();
 
   const manejarFormularioLogin = (e) => {
     e.preventDefault();
-  
+
     fetch(`http://localhost:8080/futbol-manager/usuario/${nombreUsuario}`, {
       method: "POST",
       headers: {
@@ -27,7 +29,7 @@ const IniciarSesion = () => {
       })
       .then((data) => {
         if (data.success) {
-          setSesionIniciada(true);
+          setIniciarSesion(true);
         } else {
           // Alerta de inicio de sesión fallido
           alert("Inicio de sesión fallido");
@@ -36,13 +38,14 @@ const IniciarSesion = () => {
       .catch((error) => console.error("Error al recuperar datos: ", error));
   };
 
-  const cerrarVentana = () => {};
+  const abrirVentanaRegistro = () => {    
+    navigate("/futbol-manager/registro");
+  };
 
   // inicia la sesión
-  if (sesionIniciada) {
+  if (iniciarSesion) {
     return <Home />;
   }
-
 
   return (
     <div className="InicarSesion">
@@ -82,9 +85,9 @@ const IniciarSesion = () => {
             <button
               type="submit"
               className="btn btn-danger"
-              onClick={cerrarVentana}
+              onClick={abrirVentanaRegistro}
             >
-              Cancelar
+              Registrarse
             </button>
           </form>
         </div>
