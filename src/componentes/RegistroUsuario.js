@@ -1,6 +1,6 @@
 const RegistroUsuario = () => {
     return (
-        <p>hola</p>
+        <div className="RegistroUsuario"></div>
     );
 }
 

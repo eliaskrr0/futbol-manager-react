@@ -1,12 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-import Home from "./Home";
 import { useNavigate } from "react-router-dom";
 
 const IniciarSesion = () => {
   const [nombreUsuario, setNombreUsuario] = useState("");
   const [credencialUsuario, setCredencialUsuario] = useState("");
-  const [iniciarSesion, setIniciarSesion] = useState(false);
   const navigate = useNavigate();
 
   const manejarFormularioLogin = (e) => {
@@ -29,7 +27,7 @@ const IniciarSesion = () => {
       })
       .then((data) => {
         if (data.success) {
-          setIniciarSesion(true);
+          navigate("/futbol-manager");
         } else {
           // Alerta de inicio de sesión fallido
           alert("Inicio de sesión fallido");
@@ -41,11 +39,6 @@ const IniciarSesion = () => {
   const abrirVentanaRegistro = () => {    
     navigate("/futbol-manager/registro");
   };
-
-  // inicia la sesión
-  if (iniciarSesion) {
-    return <Home />;
-  }
 
   return (
     <div className="InicarSesion">
