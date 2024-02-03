@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import GlobalFooter from "./componentes/GlobalFooter";
 import IniciarSesion from "./componentes/IniciarSesion";
 import Home from "./componentes/Home";
+import RegistroUsuario from "./componentes/RegistroUsuario";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           }
         />
         <Route path="/futbol-manager/login" element={<IniciarSesion />} />
+        <Route path="/futbol-manager/registro" element={<RegistroUsuario />} />
       </Routes>
     </div>
   );
