@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import GlobalMessages from "../utils/GlobalMessages";
 
 const IniciarSesion = () => {
   const [nombreUsuario, setNombreUsuario] = useState("");
@@ -23,7 +24,7 @@ const IniciarSesion = () => {
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error("¡Error al iniciar sesión!");
+          toast.error(GlobalMessages.incorrectLoginUser);
         }
         return response.json();
       })
@@ -31,7 +32,7 @@ const IniciarSesion = () => {
         if (data.success) {
           navigate("/futbol-manager");
         } else {
-          toast.error("¡Usuario incorrecto!");
+          toast.error(GlobalMessages.serverError);
         }
       })
       .catch((error) => console.error("Error al recuperar datos: ", error));
