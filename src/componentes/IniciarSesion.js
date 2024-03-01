@@ -1,6 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const IniciarSesion = () => {
   const [nombreUsuario, setNombreUsuario] = useState("");
@@ -29,8 +31,7 @@ const IniciarSesion = () => {
         if (data.success) {
           navigate("/futbol-manager");
         } else {
-          // Alerta de inicio de sesión fallido
-          alert("Inicio de sesión fallido");
+          toast.error("¡Usuario incorrecto!");
         }
       })
       .catch((error) => console.error("Error al recuperar datos: ", error));

@@ -6,10 +6,12 @@ import GlobalFooter from "./componentes/GlobalFooter";
 import IniciarSesion from "./componentes/IniciarSesion";
 import Home from "./componentes/Home";
 import RegistroUsuario from "./componentes/RegistroUsuario";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
     <div className="App">
+      <ToastContainer />
       <Routes>
         <Route
           path="/futbol-manager"
